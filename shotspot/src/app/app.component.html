@@ -1,0 +1,58 @@
+<div class="background">
+
+  <div class="container">
+
+    <div class="inputForm">
+
+      <div class="tabs">
+        <button class="btn" (click)="openURL()" [ngClass]="activeTab == 0? 'activeTab': 'inactiveTab'">By URL</button>
+        <button class="btn" (click)="openUpload()"  [ngClass]="activeTab == 1? 'activeTab': 'inactiveTab'">Image Upload</button>
+      </div>
+
+
+      <div class="url tabcontent" id="urlDiv">
+        <form #urlForm="ngForm" (ngSubmit)="submitForm(urlForm)">
+          Image URL:
+          <input style="width: 80%; margin-block: 1rem;" class="form-control" name="url" id="url" type="url" [(ngModel)]="urlDetails.url" #url="ngModel" required>
+          <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+      </div>
+
+      <div class="upload tabcontent" id="uploadDiv">
+        <form #urlForm="ngForm" (ngSubmit)="submitForm(urlForm)">
+          Upload Image:
+          <input style="width: 80%; margin-block: 1rem;" class="form-control" name="url" id="url" type="file"   required>
+          <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="outputForm">
+
+      <div class="resultDiv">
+
+        <div class="video">
+          <video class="videoPlayer" controls (click)="toggleVideo($event)" #videoPlayer id="video" style="width: 99%; height: 50%;">
+            <source src="" type="video/mp4" />
+            Browser not supported
+          </video>
+        </div>
+
+        <div class="resultLabels">        
+          <div class="label">
+            Anilist id: {{result.id}}
+          </div>
+          <div class="label">
+            Episode number: {{result.episode}}
+          </div>
+          <div class="label">
+            Duration: {{result.duration}}
+          </div>
+          <div class="label">
+            Similarity Score: {{result.score}}
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+.background{
+    height: 100vh;
+    width: 100vw;
+    background: url(../assets/bg.jpg);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container{
+    width: 80%;
+    height: 75%;
+    display: flex;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3px );
+    -webkit-backdrop-filter: blur( 3px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    
+
+    .inputForm{
+
+        width: 40%;
+        margin-inline: 1rem;
+        margin-block: 2rem;
+
+        background-color: rgba( 0, 0, 0, 0.18 );
+        border-radius: 2%;
+
+        .tabs{
+            width: 100%;
+            display: flex;
+            margin-bottom: 2rem;
+            border-start-end-radius: 10%;
+            border-start-start-radius: 10%;
+            background-color: rgb(41, 42, 43);
+            
+            .activeTab{
+                background-color: aliceblue;
+                border-start-end-radius: -2%;
+                border-start-start-radius: -2%;
+                border-end-start-radius: 2%;
+                border-end-end-radius: 2%;
+                color: black;
+            }
+            
+            .inactiveTab{
+                color: aliceblue;
+            }
+        }
+
+        .url{
+            display: block;
+        }
+
+        .upload{
+            display: none;
+        }
+    }
+
+    .outputForm{
+        width: 60%;
+        margin-inline: 1rem;
+        margin-block: 2rem;
+        background-color: rgba( 41, 42, 43, 0.9 );
+
+        .resultDiv{
+            display: block;
+            margin-inline: 1rem;
+
+
+            .video{
+
+                margin-block: 2rem;
+                .videoPlayer{
+                    width: 99%;
+                    height: 65%;
+                }
+            }
+            .resultLabels{
+
+                .label{
+                    font-weight: 500;
+                    margin-block: 1rem;
+                }
+            }
+        }
+    }
+}
+
+.tabcontent {
+    margin: 1rem;
+    display: block;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+  }
+  
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
