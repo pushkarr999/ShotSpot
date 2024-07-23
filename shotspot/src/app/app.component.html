@@ -13,15 +13,15 @@
       <div class="url tabcontent" id="urlDiv">
         <form #urlForm="ngForm" (ngSubmit)="submitForm(urlForm)">
           Image URL:
-          <input style="width: 80%; margin-block: 1rem;" class="form-control" name="url" id="url" type="url" [(ngModel)]="urlDetails.url" #url="ngModel" required>
+          <input style="width: 80%; margin-block: 1rem;" class="form-control" name="url" id="url" type="url" [(ngModel)]="urlDetails.img" #url="ngModel" required>
           <button type="submit" class="btn btn-dark">Submit</button>
         </form>
       </div>
 
       <div class="upload tabcontent" id="uploadDiv">
-        <form #urlForm="ngForm" (ngSubmit)="submitForm(urlForm)">
+        <form #urlForm="ngForm" (ngSubmit)="submitFormPOST(urlForm)">
           Upload Image:
-          <input style="width: 80%; margin-block: 1rem;" class="form-control" name="url" id="url" type="file"   required>
+          <input style="width: 80%; margin-block: 1rem;" class="form-control" name="url" id="url" type="file"  accept=".jpg,.jpeg,.png" required>
           <button type="submit" class="btn btn-dark">Submit</button>
         </form>
       </div>
@@ -40,7 +40,7 @@
 
         <div class="resultLabels">        
           <div class="label">
-            Anilist id: {{result.id}}
+            Name: {{result.id}}
           </div>
           <div class="label">
             Episode number: {{result.episode}}

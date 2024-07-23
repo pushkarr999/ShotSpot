@@ -23,7 +23,8 @@ export class AppComponent {
   @ViewChild("videoPlayer", { static: false }) videoplayer!: ElementRef;
 
   urlDetails = {
-    url: ''
+    url: '',
+    img:''
   }
   constructor(private http: HttpClient){}
 
@@ -48,11 +49,40 @@ export class AppComponent {
         
         const first = data.result[0]
 
-        this.result.id = first.anilist;
+        this.result.id = first.filename;
         this.result.episode = first.episode;
         this.result.src = first.video;
         this.result.duration = first.from;
-        this.result.score = first.similarity;
+        this.result.score = (parseInt(first.similarity) * 100).toString();
+
+        var video:any = document.getElementById('video');
+        video.src = first.video;
+        video.play();
+        console.log(data);  
+      });
+    }
+  }
+
+  submitFormPOST(form: any){
+    console.log("Submitted this",form,form.valid,this.urlDetails);
+
+    if(form.valid){
+      
+
+      this.http.post("https://api.trace.moe/search", this.urlDetails.img).pipe(
+        catchError((error) => {  
+          console.error('Error occurred:', error);  
+          return throwError(error);  
+        })  
+      ).subscribe((data:any) => {
+        
+        const first = data.result[0]
+
+        this.result.id = first.filename;
+        this.result.episode = first.episode;
+        this.result.src = first.video;
+        this.result.duration = first.from;
+        this.result.score = (parseInt(first.similarity) * 100).toString();
 
         var video:any = document.getElementById('video');
         video.src = first.video;
